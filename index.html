@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EliteHomes India – Find Your Dream Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">Elite<span>Homes</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="closeNav()">Home</a></li>
+    <li><a href="#properties" onclick="closeNav()">Properties</a></li>
+    <li><a href="#sold-inbox" onclick="closeNav()">Sold</a></li>
+    <li><a href="#sold-by-type" onclick="closeNav()">Sold by Type</a></li>
+    <li><a href="#land-listings" onclick="closeNav()">Land</a></li>
+    <li><a href="#services" onclick="closeNav()">Services</a></li>
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:14px">
+    <button class="inbox-bell" onclick="scrollToInbox()" title="Previously Sold Properties">
+      🔔
+      <span class="bell-badge" id="bellBadge">6</span>
+    </button>
+    <a href="#contact" class="btn-nav">Get Started</a>
+    <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Real Estate Across India</div>
+    <h1 class="hero-title">Find Your<br><span>Dream Home</span></h1>
+    <p class="hero-sub">Discover verified properties across India's top cities.<br>Thousands of homes, one trusted partner.</p>
+    <div class="hero-btns">
+      <a href="#properties" class="btn-solid">View Properties</a>
+      <a href="#contact" class="btn-ghost">Contact Agent</a>
+    </div>
+  </div>
+  <div class="search-box">
+    <h3>Search Properties</h3>
+    <div class="search-row">
+      <div class="sf">
+        <label>📍 City</label>
+        <select id="sCity">
+          <option value="">All Cities</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Bengaluru">Bengaluru</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Pune">Pune</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Gurgaon">Gurgaon</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Noida">Noida</option>
+        </select>
+      </div>
+      <div class="sf">
+        <label>🏠 Property Type</label>
+        <select id="sPType">
+          <option value="">All Types</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Villa">Villa</option>
+          <option value="Penthouse">Penthouse</option>
+          <option value="Bungalow">Bungalow</option>
+          <option value="Studio">Studio</option>
+          <option value="Row House">Row House</option>
+        </select>
+      </div>
+      <div class="sf">
+        <label>💰 Budget</label>
+        <select id="sBudget">
+          <option value="">Any Budget</option>
+          <option value="0-5000000">Under ₹50 Lakh</option>
+          <option value="5000000-10000000">₹50L – ₹1 Cr</option>
+          <option value="10000000-20000000">₹1Cr – ₹2 Cr</option>
+          <option value="20000000-50000000">₹2Cr – ₹5 Cr</option>
+          <option value="50000000-999999999">Above ₹5 Cr</option>
+          <option value="rent">For Rent</option>
+        </select>
+      </div>
+      <div class="sf">
+        <label>🛏 Bedrooms</label>
+        <select id="sBHK">
+          <option value="">Any BHK</option>
+          <option value="1">1 BHK</option>
+          <option value="2">2 BHK</option>
+          <option value="3">3 BHK</option>
+          <option value="4">4+ BHK</option>
+        </select>
+      </div>
+      <div class="sf last">
+        <label>📋 Listing</label>
+        <select id="sListing">
+          <option value="">Buy or Rent</option>
+          <option value="buy">Buy</option>
+          <option value="rent">Rent</option>
+        </select>
+      </div>
+      <button class="btn-srch" onclick="doSearch()">🔍 Search</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats" style="margin-top:52px">
+  <div class="stat fu"><div class="stat-n">2,400+</div><div class="stat-l">Properties Listed</div></div>
+  <div class="stat fu"><div class="stat-n">1,800+</div><div class="stat-l">Happy Families</div></div>
+  <div class="stat fu"><div class="stat-n">15+</div><div class="stat-l">Years Experience</div></div>
+  <div class="stat fu"><div class="stat-n">10+</div><div class="stat-l">Cities Covered</div></div>
+</div>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="props-top fu">
+    <div>
+      <div class="slabel">Our Listings</div>
+      <div class="stitle" id="propSectionTitle">Featured Properties</div>
+    </div>
+    <div class="ftabs">
+      <button class="ftab on" onclick="filterCards(this,'all')">All</button>
+      <button class="ftab" onclick="filterCards(this,'buy')">Buy</button>
+      <button class="ftab" onclick="filterCards(this,'rent')">Rent</button>
+      <button class="ftab" onclick="filterCards(this,'luxury')">Luxury</button>
+    </div>
+  </div>
+  <div class="rcount" id="rcount"></div>
+  <div class="pgrid" id="pgrid"></div>
+</section>
+
+<!-- SOLD INBOX -->
+<section id="sold-inbox">
+  <div class="sold-inbox-wrap">
+    <div class="inbox-header fu">
+      <div>
+        <div class="slabel">Market Intelligence</div>
+        <div class="stitle">Previously Sold Properties</div>
+        <p style="font-size:0.88rem;color:var(--gray);margin-top:6px;">Real transaction data to help you make informed decisions.</p>
+      </div>
+      <div class="inbox-tabs">
+        <button class="itab on" onclick="filterInbox(this,'all')">All</button>
+        <button class="itab" onclick="filterInbox(this,'recent')">Recent</button>
+        <button class="itab" onclick="filterInbox(this,'luxury')">Luxury</button>
+        <button class="itab" onclick="filterInbox(this,'affordable')">Affordable</button>
+      </div>
+    </div>
+    <div class="inbox-list fu" id="inboxList"></div>
+  </div>
+</section>
+
+<!-- SOLD BY TYPE + NEARBY MARKET -->
+<section id="sold-by-type">
+  <div class="sh fu">
+    <div class="slabel">Sold Records by Category</div>
+    <div class="stitle">Previously Sold — By Property Type</div>
+    <div class="ssub">Browse completed transactions by property type. Each card includes nearby marketplace data for the locality.</div>
+  </div>
+  <div class="type-tabs fu" id="typeTabs">
+    <button class="type-tab on" onclick="filterByType(this,'all')">All Types</button>
+    <button class="type-tab" onclick="filterByType(this,'Apartment')">🏢 Apartment</button>
+    <button class="type-tab" onclick="filterByType(this,'Villa')">🏡 Villa</button>
+    <button class="type-tab" onclick="filterByType(this,'Penthouse')">🏙️ Penthouse</button>
+    <button class="type-tab" onclick="filterByType(this,'Row House')">🏘️ Row House</button>
+    <button class="type-tab" onclick="filterByType(this,'Bungalow')">🏠 Bungalow</button>
+    <button class="type-tab" onclick="filterByType(this,'Studio')">🛋️ Studio</button>
+  </div>
+  <div class="type-grid fu" id="typeGrid"></div>
+</section>
+
+<!-- LAND LISTINGS -->
+<section id="land-listings">
+  <div class="sh fu">
+    <div class="slabel">Land &amp; Plots</div>
+    <div class="stitle">Land for Sale Across India</div>
+    <div class="ssub">Residential plots, agricultural land, commercial sites &amp; NA plots at competitive rates in prime locations.</div>
+  </div>
+  <div class="land-filter-row fu" id="landTabs">
+    <button class="land-ftab on" onclick="filterLand(this,'all')">All Land</button>
+    <button class="land-ftab" onclick="filterLand(this,'Residential Plot')">🏘️ Residential</button>
+    <button class="land-ftab" onclick="filterLand(this,'Agricultural')">🌾 Agricultural</button>
+    <button class="land-ftab" onclick="filterLand(this,'Commercial')">🏪 Commercial</button>
+    <button class="land-ftab" onclick="filterLand(this,'NA Plot')">📋 NA Plot</button>
+  </div>
+  <div class="land-grid fu" id="landGrid"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sh c fu">
+    <div class="slabel">What We Offer</div>
+    <div class="stitle">Why Choose EliteHomes</div>
+    <div class="ssub">End-to-end real estate solutions with unmatched expertise, RERA compliance, and transparency across India.</div>
+  </div>
+  <div class="sgrid">
+    <div class="scard fu"><div class="sicon">🔍</div><div class="stcard">Smart Search</div><div class="sdesc">Filter by city, BHK, budget, and locality. Our AI-powered engine finds your perfect match from 2,400+ verified listings.</div></div>
+    <div class="scard fu"><div class="sicon">🤝</div><div class="stcard">Expert Agents</div><div class="sdesc">RERA-registered agents with deep local knowledge across Mumbai, Bengaluru, Delhi, Hyderabad, Pune and more.</div></div>
+    <div class="scard fu"><div class="sicon">🛡️</div><div class="stcard">Secure Transactions</div><div class="sdesc">All deals are RERA-compliant with secure escrow, legal vetting, stamp duty guidance and full documentation support.</div></div>
+    <div class="scard fu"><div class="sicon">📊</div><div class="stcard">Market Insights</div><div class="sdesc">Live price trends, upcoming metro &amp; infra projects, and appreciation data to make smart investment decisions.</div></div>
+    <div class="scard fu"><div class="sicon">🏠</div><div class="stcard">Property Management</div><div class="sdesc">Complete NRI and landlord management — tenant screening, maintenance, rent collection, and financial reporting.</div></div>
+    <div class="scard fu"><div class="sicon">🏦</div><div class="stcard">Home Loan Help</div><div class="sdesc">We partner with SBI, HDFC, ICICI and more to get you the best rates with zero processing fee assistance.</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="agrid">
+    <div class="aimg fu"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="About EliteHomes"></div>
+    <div class="fu">
+      <div class="slabel">About Us</div>
+      <div class="stitle">India's Most Trusted Real Estate Partner</div>
+      <p class="ssub">For 15+ years, EliteHomes has helped thousands of families find their perfect home — from 1BHK apartments to ultra-luxury villas.</p>
+      <div class="apoints">
+        <div class="apoint"><div class="achk">✓</div><div class="atext"><h4>2,400+ RERA Verified Listings</h4><p>Every property is legally verified and professionally photographed across 10 cities.</p></div></div>
+        <div class="apoint"><div class="achk">✓</div><div class="atext"><h4>AI-Powered Property Matching</h4><p>Our intelligent system learns your preferences and surfaces the best options instantly.</p></div></div>
+        <div class="apoint"><div class="achk">✓</div><div class="atext"><h4>10 Cities — One Platform</h4><p>Mumbai, Delhi, Bengaluru, Hyderabad, Pune, Chennai &amp; more — all in one place.</p></div></div>
+        <div class="apoint"><div class="achk">✓</div><div class="atext"><h4>Best Price Guarantee</h4><p>Our agents negotiate on your behalf to ensure you always get the best deal possible.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section style="background:var(--black2);padding:80px 48px">
+  <div class="sh c fu"><div class="slabel">Our Team</div><div class="stitle">Meet Our Expert Agents</div></div>
+  <div class="agentgrid">
+    <div class="agentcard fu"><div class="agentimg"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Rahul Sharma"></div><div class="agentinfo"><div class="agentname">Rahul Sharma</div><div class="agentrole">Senior Agent · Mumbai</div><div class="agentstat">⭐ 4.9 · 320 deals closed</div></div></div>
+    <div class="agentcard fu"><div class="agentimg"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Priya Nair"></div><div class="agentinfo"><div class="agentname">Priya Nair</div><div class="agentrole">Luxury Specialist · Bengaluru</div><div class="agentstat">⭐ 5.0 · 210 deals closed</div></div></div>
+    <div class="agentcard fu"><div class="agentimg"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" alt="Vikram Patel"></div><div class="agentinfo"><div class="agentname">Vikram Patel</div><div class="agentrole">Investment Advisor · Pune</div><div class="agentstat">⭐ 4.8 · 250 deals closed</div></div></div>
+    <div class="agentcard fu"><div class="agentimg"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Ananya Reddy"></div><div class="agentinfo"><div class="agentname">Ananya Reddy</div><div class="agentrole">Buyer's Agent · Hyderabad</div><div class="agentstat">⭐ 4.9 · 180 deals closed</div></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="sh c fu"><div class="slabel" style="color:var(--gold)">Client Stories</div><div class="stitle">What Our Clients Say</div></div>
+  <div class="tgrid">
+    <div class="tcard fu"><div class="tstars">★★★★★</div><div class="ttext">"EliteHomes helped us find a 3BHK in Powai under ₹1.8 Cr. Rahul handled all RERA paperwork — completely stress-free experience for our family!"</div><div class="tauthor"><img class="tavatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt=""><div><div class="tname">Suresh &amp; Kavitha M.</div><div class="tloc">Mumbai, Maharashtra</div></div></div></div>
+    <div class="tcard fu"><div class="tstars">★★★★★</div><div class="ttext">"I sold my Whitefield apartment in 22 days above asking price. Priya is a true Bengaluru market expert. Highly recommended for tech professionals!"</div><div class="tauthor"><img class="tavatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt=""><div><div class="tname">Deepika Iyer</div><div class="tloc">Bengaluru, Karnataka</div></div></div></div>
+    <div class="tcard fu"><div class="tstars">★★★★★</div><div class="ttext">"The AI chatbot answered all my NRI questions about buying in Hyderabad. Booked a site visit the same evening. Outstanding service!"</div><div class="tauthor"><img class="tavatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt=""><div><div class="tname">Arjun Mehta</div><div class="tloc">NRI · Hyderabad Investment</div></div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sh c fu"><div class="slabel">Get In Touch</div><div class="stitle">Ready to Find Your Home?</div><div class="ssub">Our agents across India will match you with the perfect property within 24 hours.</div></div>
+  <div class="cgrid fu">
+    <div class="cinfo">
+      <div class="ccard"><div class="cicon">📞</div><div><div class="ctitle">Phone</div><div class="cval">+91 98765 43210</div></div></div>
+      <div class="ccard"><div class="cicon">✉️</div><div><div class="ctitle">Email</div><div class="cval">info@elitehomes.in</div></div></div>
+      <div class="ccard"><div class="cicon">📍</div><div><div class="ctitle">Head Office</div><div class="cval">Bandra Kurla Complex, Mumbai 400051</div></div></div>
+      <div class="ccard"><div class="cicon">🕐</div><div><div class="ctitle">Working Hours</div><div class="cval">Mon–Sat: 9AM – 7PM IST</div></div></div>
+    </div>
+    <div class="cform">
+      <div class="frow">
+        <div class="fg"><label>Full Name</label><input type="text" placeholder="Rahul Kumar"></div>
+        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="rahul@example.com"></div>
+      <div class="frow">
+        <div class="fg"><label>Preferred City</label><select><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>Hyderabad</option><option>Chennai</option><option>Pune</option><option>Kolkata</option><option>Gurgaon</option><option>Jaipur</option><option>Noida</option></select></div>
+        <div class="fg"><label>I'm Looking To</label><select><option>Buy a Property</option><option>Rent a Property</option><option>Sell My Property</option><option>NRI Investment</option></select></div>
+      </div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell us your budget (₹), BHK requirement, preferred locality..."></textarea></div>
+      <button class="bsubmit" onclick="submitForm(this)">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="flogo">EliteHomes</div>
+      <div class="fdesc">India's trusted real estate platform. We connect homebuyers and investors with verified properties across 10+ cities with full transparency and expertise.</div>
+      <div class="fsocials"><a class="fsoc" href="#">f</a><a class="fsoc" href="#">𝕏</a><a class="fsoc" href="#">in</a><a class="fsoc" href="#">▶</a></div>
+    </div>
+    <div><div class="fh">Quick Links</div><ul class="flinks"><li><a href="#home">Home</a></li><li><a href="#properties">Properties</a></li><li><a href="#sold-inbox">Sold Properties</a></li><li><a href="#land-listings">Land &amp; Plots</a></li><li><a href="#services">Services</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><div class="fh">Services</div><ul class="flinks"><li><a href="#">Property Sales</a></li><li><a href="#">Property Rental</a></li><li><a href="#">Land &amp; Plots</a></li><li><a href="#">NRI Investment</a></li><li><a href="#">Home Loan Help</a></li></ul></div>
+    <div><div class="fh">Contact</div><div class="fci">📞 +91 98765 43210</div><div class="fci">✉️ info@elitehomes.in</div><div class="fci">📍 BKC, Mumbai 400051</div><div class="fci">🇮🇳 RERA Registered · Pan India</div></div>
+  </div>
+  <div class="fbot">© 2025 EliteHomes. All rights reserved. | <a href="#" style="color:inherit">Privacy Policy</a> | <a href="#" style="color:inherit">Terms of Service</a></div>
+</footer>
+
+<!-- PROPERTY DETAIL MODAL -->
+<div class="moverlay" id="moverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="mimg"><img id="mImgEl" src="" alt=""><div class="mpricebadge" id="mPriceEl"></div><button class="mclose" onclick="closeModalDirect()">✕</button></div>
+    <div class="mbody">
+      <div class="mcity" id="mCityEl"></div>
+      <div class="mtitle" id="mTitleEl"></div>
+      <div class="mloc" id="mLocEl"></div>
+      <div class="mgrid" id="mStatsEl"></div>
+      <div class="mdesc" id="mDescEl"></div>
+      <div class="mfeats" id="mFeatsEl"></div>
+      <div class="mactions">
+        <button class="mbtn p" onclick="bookViewing()">📅 Schedule Viewing</button>
+        <button class="mbtn o" onclick="closeModalDirect()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLD DETAIL DRAWER -->
+<div class="sold-drawer-overlay" id="soldDrawerOverlay" onclick="closeSoldDrawer(event)">
+  <div class="sold-drawer" id="soldDrawer">
+    <div class="drawer-header">
+      <h3>🏆 Sold Property Details</h3>
+      <button class="drawer-close" onclick="closeSoldDrawerDirect()">✕</button>
+    </div>
+    <div id="drawerContent"></div>
+  </div>
+</div>
+
+<!-- CHATBOT FAB -->
+<button class="cfab" id="cfab" onclick="toggleChat()" title="Chat with AI Assistant">🏠</button>
+
+<!-- CHATBOT WINDOW -->
+<div class="cwin" id="cwin">
+  <div class="chdr">
+    <div class="cavatar">🤖</div>
+    <div class="chdrinfo"><h4>EliteHomes AI Assistant</h4><p>Always here</p></div>
+    <div class="cstatus"></div>
+    <button class="cclose" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cmsgs" id="cmsgs">
+    <div class="msg bot"><div class="mbub">🙏 Namaste! I'm Alex, your EliteHomes AI assistant. I can help you find properties, explain RERA rules, home loans, land listings, NRI buying, or schedule a site visit. How can I help?</div><div class="mtime">Just now</div></div>
+  </div>
+  <div class="csuggs" id="csuggs">
+    <button class="csugg" onclick="quickSend(this)">Flats in Mumbai under ₹1 Cr</button>
+    <button class="csugg" onclick="quickSend(this)">3BHK in Bengaluru</button>
+    <button class="csugg" onclick="quickSend(this)">Home loan process</button>
+    <button class="csugg" onclick="quickSend(this)">Land in Goa</button>
+  </div>
+  <div class="cinrow">
+    <input class="cinput" id="cinput" type="text" placeholder="Ask about properties, land, prices..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="csend" id="csend" onclick="sendMsg()">➤</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
